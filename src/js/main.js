@@ -63,5 +63,13 @@ function handleSignoutClick() {
 
 //get channel from API
 function getChannel(channel){
-    console.log(channel);
+    gapi.client.youtube.channels.list({
+        part: 'snipped, content details, statistics',
+        forusername: channel
+    })
+    .then(Response => {
+        console.log(Response);
+    })
+    .catch(err => alert('invalid channel name'));
+
 }
